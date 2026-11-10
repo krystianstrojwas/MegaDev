@@ -1,0 +1,47 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: support desk
+status: living
+reviewed: 2026-11-10
+signature: Krystian
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+#4471 was merged and marked known as one bug: the parser reads dates month first. Read report
+by report, it holds three different problems. One fix will not close the ticket.
+
+<Callout>
+Not known, not one issue. Split into three tickets, one per problem.
+</Callout>
+
+## The three problems
+
+<ProblemTable ticket={4471} />
+
+1. **Parser.** The shared parser reads every date month first. Tenants that write the day first
+   get day and month flipped. This is the one #4471 was filed for.
+2. **Form hint.** booking-v3 prints `MM/DD/YYYY` under the date field. People at day-first
+   tenants type what it says. Only form reports on booking-v3, three tenants. The parser fix will
+   not change this.
+3. **One-day move.** Right month, one day off. The notes mention one month only, two time zones
+   for one meeting, an invite before the booking. Likely time zone handling. Cause not confirmed.
+
+## Why they were merged
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. All three
+problems arrive as "wrong day on the invite". The causes only show in the body and in who the
+tenant is. The export also repeats 15 report ids; they count once.
+
+## What to do
+
+- File one ticket per problem, each with its report count.
+- Replace decision 0001 with a new record. An accepted decision is never edited.
+- Do not close #4471 when the parser fix ships.
+
+<RenderStamp {signature} />

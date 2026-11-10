@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>#4471 · three problems, not one · support kb</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a66;--line:#e3e0d8;--accent:#2f6f5e;--warn:#b4501f;--note-bg:#eef5f2;--mono:ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#171716;--fg:#ecebe6;--muted:#9c9a93;--line:#34332f;--accent:#6fbfa6;--note-bg:#1d2c27}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}
+.kb{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}
+a{color:var(--accent)} .crumb{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}
+h1{margin:.25rem 0 .5rem;line-height:1.2}.meta{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}
+.status{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}th,td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}
+code{font-family:var(--mono);font-size:.88em}
+aside{border-left:4px solid var(--accent);padding:.5rem 1rem;margin:1rem 0;background:var(--note-bg)}
+.stamp{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp b{color:var(--accent);letter-spacing:.04em}
+footer{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style></head><body><div class="kb">
+<header><a class="crumb" href="/kb">support desk · kb</a><h1>#4471 · three problems, not one</h1>
+<p class="meta"><span>owner <b>support desk</b></span><span class="status living">living</span><span>reviewed 2026-11-10 · 0 days ago</span></p></header>
+<main>
+<p>#4471 was merged and marked known as one bug: the parser reads dates month first. Read report by report, it holds three different problems. One fix will not close the ticket.</p>
+<aside>Not known, not one issue. Split into three tickets, one per problem.</aside>
+<h2>The three problems</h2>
+<p><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p>
+<table><thead><tr><th>problem</th><th>reports</th><th>tenants</th></tr></thead><tbody>
+<tr><td>Parser reads day-first dates month-first</td><td>374</td><td>11</td></tr>
+<tr><td>booking-v3 form hints MM/DD/YYYY to day-first tenants</td><td>33</td><td>3</td></tr>
+<tr><td>Invites land one day off (likely time zone)</td><td>5</td><td>5</td></tr></tbody></table>
+<ol>
+<li><strong>Parser.</strong> The shared parser reads every date month first. Tenants that write the day first get day and month flipped. This is the one #4471 was filed for.</li>
+<li><strong>Form hint.</strong> booking-v3 prints <code>MM/DD/YYYY</code> under the date field. People at day-first tenants type what it says. Only form reports on booking-v3, three tenants. The parser fix will not change this.</li>
+<li><strong>One-day move.</strong> Right month, one day off. The notes mention one month only, two time zones for one meeting, an invite before the booking. Likely time zone handling. Cause not confirmed.</li></ol>
+<h2>Why they were merged</h2>
+<p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on subject line alone. All three problems arrive as "wrong day on the invite". The causes only show in the body and in who the tenant is. The export also repeats 15 report ids; they count once.</p>
+<h2>What to do</h2>
+<ul><li>File one ticket per problem, each with its report count.</li><li>Replace decision 0001 with a new record. An accepted decision is never edited.</li><li>Do not close #4471 when the parser fix ships.</li></ul>
+<p class="stamp">desk ref <b>DR-FHHV-173G</b></p>
+</main><footer>Pages are written by people. Tables and charts are built from data at render time.</footer></div></body></html>
