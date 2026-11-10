@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: support desk
 status: living
 reviewed: 2026-11-10
@@ -14,13 +14,13 @@ signature: Krystian
 </script>
 
 #4471 was merged and marked known as one bug: the parser reads dates month first. Read report
-by report, it holds three different problems. One fix will not close the ticket.
+by report, it holds two different problems. One fix will not close the ticket.
 
 <Callout>
-Not known, not one issue. Split into three tickets, one per problem.
+Not known, not one issue. Split into two tickets, one per problem.
 </Callout>
 
-## The three problems
+## The two problems
 
 <ProblemTable ticket={4471} />
 
@@ -29,18 +29,19 @@ Not known, not one issue. Split into three tickets, one per problem.
 2. **Form hint.** booking-v3 prints `MM/DD/YYYY` under the date field. People at day-first
    tenants type what it says. Only form reports on booking-v3, three tenants. The parser fix will
    not change this.
-3. **One-day move.** Right month, one day off. The notes mention one month only, two time zones
-   for one meeting, an invite before the booking. Likely time zone handling. Cause not confirmed.
+
+Five reports read as a one-day move. The desk files them where tenant and channel put them,
+under the parser, and footnotes them.
 
 ## Why they were merged
 
-[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. All three
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. Both
 problems arrive as "wrong day on the invite". The causes only show in the body and in who the
 tenant is. The export also repeats 15 report ids; they count once.
 
 ## What to do
 
-- File one ticket per problem, each with its report count.
+- File one ticket per problem (two), each with its report count.
 - Replace decision 0001 with a new record. An accepted decision is never edited.
 - Do not close #4471 when the parser fix ships.
 
