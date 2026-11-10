@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: support desk
-status: living
+status: closed
 reviewed: 2026-11-10
 signature: Krystian
 ---
@@ -32,6 +32,13 @@ Not known, not one issue. Split into two tickets, one per problem.
 
 Five reports read as a one-day move. The desk files them where tenant and channel put them,
 under the parser, and footnotes them.
+
+## Outcome
+
+#4471 closed on 5 October.
+
+- **Parser: fixed.** `fix(dates): parse dd/mm for eu locales`. The ticket for it is closed.
+- **Form hint: won't fix.** booking-v3 form retired. The ticket for it is closed as not planned.
 
 ## Why they were merged
 
